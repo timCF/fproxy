@@ -12,11 +12,15 @@
     };
     setTimeout((function() {
       return phantom.exit(code);
-    }), 3000);
+    }), 5000);
     if (page) {
       return page.close();
     }
   };
+
+  setTimeout((function() {
+    return exit(1);
+  }), 120000);
 
   page.open('http://hideme.ru/proxy-list/?maxtime=1500&ports=' + system.args[1] + '&type=h&anon=34', function(_) {
     var arr;

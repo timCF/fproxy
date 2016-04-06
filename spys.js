@@ -14,11 +14,15 @@
     };
     setTimeout((function() {
       return phantom.exit(code);
-    }), 3000);
+    }), 5000);
     if (page) {
       return page.close();
     }
   };
+
+  setTimeout((function() {
+    return exit(1);
+  }), 120000);
 
   page.onInitialized = function() {
     page.onCallback = function(data) {

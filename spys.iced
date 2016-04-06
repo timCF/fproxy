@@ -3,8 +3,9 @@ system = require('system')
 submitted = false
 exit = (code) ->
 	phantom.onError = () -> null
-	setTimeout((() -> phantom.exit(code)), 3000)
+	setTimeout((() -> phantom.exit(code)), 5000)
 	if page then page.close()
+setTimeout((() -> exit(1)), 120000)
 page.onInitialized = () ->
 	page.onCallback = (data) ->
 		if submitted
