@@ -20,7 +20,7 @@
 
   setTimeout((function() {
     return exit(1);
-  }), 120000);
+  }), 100000);
 
   page.open('http://hideme.ru/proxy-list/?maxtime=1500&ports=' + system.args[1] + '&type=h&anon=34', function(_) {
     var arr;

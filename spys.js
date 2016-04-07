@@ -22,7 +22,7 @@
 
   setTimeout((function() {
     return exit(1);
-  }), 120000);
+  }), 100000);
 
   page.onInitialized = function() {
     page.onCallback = function(data) {

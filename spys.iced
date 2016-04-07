@@ -5,7 +5,7 @@ exit = (code) ->
 	phantom.onError = () -> null
 	setTimeout((() -> phantom.exit(code)), 5000)
 	if page then page.close()
-setTimeout((() -> exit(1)), 120000)
+setTimeout((() -> exit(1)), 100000)
 page.onInitialized = () ->
 	page.onCallback = (data) ->
 		if submitted
