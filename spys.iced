@@ -10,7 +10,12 @@ page.onInitialized = () ->
 	page.onCallback = (data) ->
 		if submitted
 			arr = page.evaluate(() ->
-					[].slice.call(document.getElementsByClassName('spy14'))
+					[].slice.call(document.getElementsByClassName('spy1x'))
+						.concat([].slice.call(document.getElementsByClassName('spy1xx')))
+						.filter((el) ->
+							latency = el.querySelectorAll("td[colspan]")[3]
+							if latency then (parseFloat(latency.textContent) < 1) else false)
+						.reduce(((acc, el) -> [].slice.call(el.getElementsByClassName('spy14')).concat(acc)), [])
 						.map((el) -> el.textContent.match(/^(\d+\.\d+\.\d+\.\d+).+(\:\d+)$/))
 						.filter((el) -> el)
 						.map((el) -> el[1]+el[2]))
@@ -18,7 +23,7 @@ page.onInitialized = () ->
 			exit(0)
 		else
 			page.evaluate(() ->
-				document.getElementById('xpp').selectedIndex = 3
+				document.getElementById('xpp').selectedIndex = 4
 				document.getElementById('xf2').selectedIndex = 1
 				document.forms[0].submit())
 			submitted = true
